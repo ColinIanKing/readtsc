@@ -1,0 +1,18 @@
+name: readtsc
+version: 0.0.1
+summary: Intel x86 Time Stamp Counter read
+description: readtsc reads and prints the x86 CPU timestamp
+
+confinement: strict
+
+parts:
+    readtsc:
+        plugin: make
+        source: .
+        build-packages:
+            - gcc
+            - make
+apps:
+    readtsc:
+        command: usr/bin/readtsc
+
