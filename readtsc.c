@@ -37,8 +37,7 @@ static inline uint64_t rdtsc(void)
 		uint32_t lo, hi;
         	asm volatile("rdtsc" : "=a" (lo), "=d" (hi));
 		return ((uint64_t)(hi) << 32) | lo;
-	}
-	else {
+	} else {
 		uint64_t tsc;
         	asm volatile("rdtsc" : "=A" (tsc));
 		return tsc;
@@ -52,7 +51,6 @@ int main(int argc, char **argv)
 	long cpu = 0;
 	long cpus = sysconf(_SC_NPROCESSORS_ONLN);
 
-#if 1
 	if (argc > 1) {
 		if (sscanf(argv[1], "%ld", &cpu) != 1)
 			cpu = -1;
@@ -70,8 +68,6 @@ int main(int argc, char **argv)
 		}
 	}
 
-
-#endif
 	cpu = sched_getcpu();
  	tsc = rdtsc();
 	printf("0x%" PRIx64 " %" PRIu64 " (on cpu %ld)\n",tsc, tsc, cpu);
