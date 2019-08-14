@@ -31,6 +31,8 @@
 
 #define NAME "readtsc"
 
+#if defined(__x86_64__) || defined(__x86_64) || \
+    defined(__i386__)   || defined(__i386)
 static inline uint64_t rdtsc(void)
 {
 	if (sizeof(long) == sizeof(uint64_t)) {
@@ -74,3 +76,11 @@ int main(int argc, char **argv)
 
 	exit(EXIT_SUCCESS);
 }
+#else
+int main(int argc, char **argv)
+{
+	fprintf(stderr, "failed: only supported for x86 platforms\n");
+	exit(EXIT_FAILURE);
+}
+
+#endif
