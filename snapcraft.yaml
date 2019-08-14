@@ -1,9 +1,15 @@
 name: readtsc
-version: 0.0.1
+version: git
+version-script: |
+    echo $(git describe --tags)
 summary: Intel x86 Time Stamp Counter read
 description: readtsc reads and prints the x86 CPU timestamp
 
 confinement: strict
+
+architectures:
+    - amd64
+    - i386
 
 parts:
     readtsc:
