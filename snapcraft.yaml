@@ -1,5 +1,4 @@
 name: readtsc
-version: git
 summary: Intel x86 Time Stamp Counter read
 description: readtsc reads and prints the x86 CPU timestamp
 confinement: strict
@@ -15,7 +14,8 @@ architectures:
 parts:
     readtsc:
         plugin: make
-        source: .
+        source: https://git.launchpad.net/~colin-king/+git/readtsc
+        source-type: git
         build-packages:
             - gcc
             - make
